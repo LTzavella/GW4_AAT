@@ -123,6 +123,10 @@ One potential explanation for this finding is that during training associations 
 
 [@chen_when_2018]
 
+# Hypotheses
+
+
+
 # Methods {#methods}
 
 ## Participants {#participants}
@@ -136,12 +140,13 @@ One potential explanation for this finding is that during training associations 
 \par
 The required sample size was estimated based on a frequentist power analysis conducted for the primary outcome measure (i.e., change in approach-avoidance bias, from pre-to post-training, between go and no-go foods; H1a and H1b) and the stimulus devaluation manipulation check (i.e., change in food liking, from pre-to-post training, between go and no-go foods; H2). Both of these effect sizes were in the medium range, we therefore based our calculations on the primary outcome measure.  For an expected effect size we considered other studies that have measured approach bias pre-and post-approach-avoidance training [@becker_approach_2015-1; @schumacher_bias_2016]. Both studies reported an effect size of \textit{$\eta$\textsubscript{p}\textsuperscript{2}}=0.07 which corresponds to a ‘medium’ effect size. @becker_approach_2015-1 \hl{double check it's the same paper as I had 2014 here} also reported two non-significant results, although effect sizes were not provided\footnote{Note, however, that @becker_approach_2015-1 compared an active group with 90:10 mapping (i.e. avoidance of 90% for unhealthy trials and 10% healthy trials) to a control group with 50:50 mapping whereas @schumacher_bias_2016 compared a 90:10 active group with a 10:90 control group.}. We therefore took a conservative approach when calculating our sample size. Firstly, we reduced the effect size by 33% (i.e., \textit{dz} = 0.34) to account for publication bias [@button_power_2013] and secondly we used an alpha of 0.005, which has recently been recommended for any research that cannot be considered a direct replication and can increase the reliability of new discoveries [@benjamin_redefine_2017]. Based on a priori power calculations using G*Power [@faul_statistical_2009] we estimated that a total sample of 149 participants was necessary for 90% power. 
 
+
 \par  
 The sampling method and power analysis of the study followed a conservative frequentist approach, but the pre-registered analyses were based on a Bayesian framework (see \hl{Pre-registered analyses}). Frequentist analyses were also reported in a supplementary fashion. Bayes factors (BFs) informed the interpretations of the results and although debate exists about labelling evidence in terms of BFs [@richard_d._morey_verbal_2015], we followed the guidelines by [@lee_bayesian_2013]. A threshold of BF\textsubscript{10} > 6 was used to indicate moderate evidence for the alternative hypothesis relative to the null, and BF\textsubscript{10} < 1/6 reflected moderate evidence for the null relative to the respective alternative hypothesis. Bayes factor analyses were favoured for drawing conclusions from the study, as they would allow us to interpret null outcomes as evidence of absence when traditional analyses would not make such inferences feasible. For frequentists analyses, an alpha level of 0.005 was used.
 
 ## Procedure {#procedure}
 
-The study procedure can be seen in Figure \ref{fig:procedure}. After screening, eligible participants were provided with a short survey (see \textit{\nameref{survey_questionnaires}}) and proceeded to rate all food categories on how much they like the taste (see \textit{\nameref{food_ratings}}). Three blocks of the approach-avoidance task were completed before the go/no-go training paradigm was performed. Rated food categories wer randomly assigned to three conditions for training: go, no-go and control, as shown in Figure \ref{fig:procedure}. 
+The study procedure can be seen in Figure \ref{fig:procedure}. After screening, eligible participants were provided with a short survey (see \textit{\nameref{survey_questionnaires}}) and proceeded to rate all food categories on how much they like the taste (see \textit{\nameref{food_ratings}}). Three blocks of the approach-avoidance task (AAT) were completed before the go/no-go training paradigm was performed. Rated food categories wer randomly assigned to three conditions for training: go, no-go and control, as shown in Figure \ref{fig:procedure}. Post-training, participants were presented with another three blocks of the AAT, provided ratings for all food stimuli again and finally completed a short food choice task (see \textit{\nameref{food_choice}}). At the end of the study, several questionnaires were presented in random order (see \textit{\nameref{survey_questionnaires}}) and participants were debriefed about the aims of the study. 
 
 \begin{figure} [!htb]
 \centering
@@ -194,7 +199,35 @@ Eligible participants were presented with an initial survey to record demographi
 \par
 Several questionnaires were completed by the participants at the end of the study for exploratory analyses, as part of the undergraduate student projects of the GW4 Undergraduate Psychology Consortium 2017/2018. The Barratt Impulsivity Scale [BIS-15; @spinellaNormativeDataShort2007] was introduced to explore the relationship between training outcomes and impulsivity. We also examined a distinctive element of general trait self-control, referred to as stop control, using the Stop Control Scale [SCS; @deboerStopStartControl2011]. Other administered questionnaires included the Food Cravings Questionnaire - Trait - reduced  [FCQ-T-r; @meule_short_2014], Perceived Stress Scale [PSS; @cohenGlobalMeasurePerceived1983] and the 'food' and 'money' subscales from the Delaying Gratification Inventory [DGI; @hoergerDevelopmentValidationDelaying2011]. 
 
+# Analyses
+
+## Measures & indices
+
+\par
+Reaction time and accuracy data from the GNG blocks were recorded for all design cells for an exploratory assessment of training performance (see \hl{[section]}). The mean error rates in no-signal and signal trials as well as mean reaction time in no-signal trials (GoRT) informed participant exclusions from all analyses (see \textit{\nameref{data_exclusions}}). For the contingency learning manipulation check (H3, H4), we measured the average proportion of successful stops from signal trials for no-go foods and control foods which were paired with a signal (controlnogo) and the mean GoRTs for each participant from go and controlgo trials. 
+\par
+Performance in the AAT\textsubscript{pre} and AAT\textsubscript{post} blocks was considered only for correct responses. We calculated median RTs for ‘push’ and ‘pull’ responses on all training condition levels, at a participant level. Medians were used instead of means as they are less sensitive to outliers in RT distributions and in line with previous literature [@wiersRelativelyStrongAutomatic2009; @wiersRetrainingAutomaticAction2010]. The approach-avoid bias score for each condition was calculated as the difference between the median RTs for ‘push’ and’ pull’ responses (MedianRT\textsubscript{push}- MedianRT\textsubscript{pull}). Bias scores were computed for both AAT\textsubscript{pre} and AAT\textsubscript{post} blocks. Positive scores indicate an approach bias towards the foods of interest and negative scores reflect avoidance for those foods. Change scores for approach-avoid biases from pre-to post-training ($\Delta$AAT bias score) were calculated for pre-registered analyses (H1). The proportion of correct responses for each AAT design cell informed participant exclusions.
+\par
+Participants were required to choose three foods out of twelve in the food choice task and selections could vary in their number for each training condition (go, no-go, control). Food choices were therefore normalised according to the total number of responses per participant (i.e., proportion). For the analyses of food choices, we compared the mean proportions of choices (calculated per participant relative to their total number of choices) between each training condition. Food rating VAS scores were averaged (mean) across the two foods per training condition (i.e., sweet and savoury foods for go, no-go and control conditions) and the three exemplars of each food. Changes in food liking were examined in terms of change scores ($\Delta$Food liking score) from pre-to-post training.
+
+## Data exclusions {#data_exclusions}
+
+
+Participant-level data exclusions were conducted based on GNG training and AAT performance. Participants who met any of the following criteria were excluded from all respective analyses. We excluded participants who had a mean GoRT greater than three standard deviations from the group mean and proportion of correct responses in no-signal trials less than 0.85. Participants were also excluded if they had a mean error rate in signal trials greater than three standard deviations from the group mean and a mean error rate in either pre- or post- AAT blocks greater than 0.25. Additionally, participants who submitted a food rating of 50 (i.e., neutral) for 24 or more trials wither pre-or post-training would not be included as we assumed that multiple such responses would indicate that participants used the default setting of the VAS and purposefully skipped the rating trials. 
+
+## Pre-registered analyses
+
+
+
 # Results
+
+## Sample characteristics
+
+## Confirmatory findings for training outcomes
+
+## Manipulation checks for learning \& devaluation
+
+## 
 
 # Discussion
 
