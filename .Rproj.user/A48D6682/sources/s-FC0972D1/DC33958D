@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1562110252941.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "DC33958D",
+    "lastKnownWriteTime" : 1562175597,
+    "last_content_update" : 1562175597739,
+    "path" : "~/GitHub/GW4_AAT/appendix.Rmd",
+    "project_path" : "appendix.Rmd",
+    "properties" : {
+        "cursorPosition" : "9,26",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
