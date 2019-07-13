@@ -105,6 +105,7 @@
 \usepackage{amsmath}
 \usepackage{soul}
 \usepackage{caption}
+\usepackage{tabularx, booktabs}
 
 \authornote{The research project was conducted as part of the GW4 Undergraduate Psychology Consortium 2017/2018. This project was partially supported by the European Research Council (Consolidator 647893; C.D.C.). We gratefully acknowledge Teaching Development Funding, from the faculty of Humanities and Social Sciences at the University of Bath for funding travel and room hire costs for the consortium meetings.
 
@@ -258,7 +259,7 @@ The approach-avoidance task (AAT) was adapted from an existent paradigm (Rinck \
 
 \par
 
-AAT responses involved \enquote{push} and \enquote{pull} movements of the computer mouse. Food stimuli were presented in the centre of the screen and participants were instructed to pull the mouse towards them or push the mouse away from them according to whether the image was in portrait or landscape format (see Figure \ref{fig:procedure}). Response-format assignments were approximately counterbalanced across participants\footnote{In the final sample, 74 participants were instructed to pull the mouse towards them (approach) when the picture was in a portrait format and push the mouse away from them (avoid) when it was in a landscape format. 89 participants had the opposite response-format assignment.}. Instructions highlighted moving the mouse cursor until it reaches the end of the screen (top or bottom edge) for a correct response to be registered and making smooth whole-arm movements. Participants had 1500ms to respond after the stimulus appeared. Each trial started with a central \enquote{X} on the screen and participants had to click on it to begin. The ITI was 500 ms and there was no delay between the \enquote{X} click response and the stimulus onset. In order to account for the natural movement of the mouse, pixel tolerance was added to every mouse movement (\(\pm\) 1.25\% of display height), including movement initiation in the beginning of the trial. A response in the AAT was registered as correct only when participants completed the correct action (e.g., pull or push) within the maxRT window and also initiated a movement towards the correct direction. Even if the final response was correct, participants could have changed their movement after making an initial error (e.g., pull instead of push the mouse in an \enquote{avoid} trial) and therefore the direction of their initial movement was also taken into account. The complete RT for an AAT trial was defined as the time from the stimulus onset to the successful completion of a response.
+AAT responses involved \enquote{push} and \enquote{pull} movements of the computer mouse. Food stimuli were presented in the centre of the screen and participants were instructed to pull the mouse towards them or push the mouse away from them according to whether the image was in portrait or landscape format (see Figure \ref{fig:procedure}). Response-format assignments were approximately counterbalanced across participants (45.4\% portrait-approach, 54.6\% landscape-approach). 89 participants had the opposite response-format assignment.\}. Instructions highlighted moving the mouse cursor until it reaches the end of the screen (top or bottom edge) for a correct response to be registered and making smooth whole-arm movements. Participants had 1500ms to respond after the stimulus appeared. Each trial started with a central \enquote{X} on the screen and participants had to click on it to begin. The ITI was 500 ms and there was no delay between the \enquote{X} click response and the stimulus onset. In order to account for the natural movement of the mouse, pixel tolerance was added to every mouse movement (\(\pm\) 1.25\% of display height), including movement initiation in the beginning of the trial. A response in the AAT was registered as correct only when participants completed the correct action (e.g., pull or push) within the maxRT window and also initiated a movement towards the correct direction. Even if the final response was correct, participants could have changed their movement after making an initial error (e.g., pull instead of push the mouse in an \enquote{avoid} trial) and therefore the direction of their initial movement was also taken into account. The complete RT for an AAT trial was defined as the time from the stimulus onset to the successful completion of a response.
 
 \par
 
@@ -356,7 +357,37 @@ The evidential value of confirmatory findings was solely determined by the Bayes
 \hypertarget{sample-characteristics}{%
 \subsection{Sample characteristics}\label{sample-characteristics}}
 
-The final sample for pre-registered analyses consisted of 163 participants. Detailed participant-level exclusions are presented in Figure A1.
+The final sample for pre-registered analyses consisted of 163 participants (80.98\% female). Detailed participant-level exclusions are presented in Figure A1. Participants had on average a healthy BMI (\emph{M} = 22.88, \emph{SD} = 2.98, range = 18.54 - 32.36) and their mean age was 22.39 (\emph{SD} = 9.04, range = 18-59). 108 participants (66.26\%) reported that they had their last meal 3-5 hours before the study and hunger levels at the beginning of the study were not particularly high (\emph{M} = 5.70, \emph{SD} = 2.22).
+
+\begin{table}[h]
+    \centering
+    \caption{Bayesian Pearson Correlations}
+    \label{tab:bayesianPearsonCorrelations}
+    {
+        \begin{tabularx}{c *{8}{Y}}
+            \toprule
+             &  & 1. & 2. & 3. & 4. & 5. & 6.  \\
+            \cmidrule[0.4pt]{1-8}
+            1$.$ FCQ-T-r total & Pearson's r & -- &   &   &   &   &    \\
+             & log(BF$_{1}$$_{0}$) & -- &  &  &  &  &   \\
+            2$.$ BIS total & Pearson's r & 0.491 & -- &   &   &   &    \\
+             & log(BF$_{1}$$_{0}$) & 19.572 & -- &  &  &  &   \\
+            3$.$ PSS total & Pearson's r & 0.462 & 0.316 & -- &   &   &    \\
+             & log(BF$_{1}$$_{0}$) & 16.754 & 6.043 & -- &  &  &   \\
+            4$.$ SCS total & Pearson's r & -0.374 & -0.721 & -0.260 & -- &   &    \\
+             & log(BF$_{1}$$_{0}$) & 9.630 & 56.042 & 3.247 & -- &  &   \\
+            5$.$ DGI food subscale & Pearson's r & -0.612 & -0.433 & -0.226 & 0.376 & -- &    \\
+             & log(BF$_{1}$$_{0}$) & 35.070 & 14.168 & 1.849 & 9.777 & -- &   \\
+            6$.$ BMI (kg/m$^{2}$) & Pearson's r & 0.246 & 0.161 & 0.125 & -0.122 & -0.189 & --  \\
+             & log(BF$_{1}$$_{0}$) & 2.655 & -0.245 & -1.067 & -1.133 & 0.577 & --  \\
+            \bottomrule
+            % \multicolumn{8}{p{0.5\linewidth}}}
+        \end{tabularx}
+    }
+    \begin{tablenotes}[para]
+\footnotesize{\textit{Note.} * log(BF$_{1}$$_{0}$)  > log(10), **  log(BF$_{1}$$_{0}$)  > log(30), ***  log(BF$_{1}$$_{0}$)  > log(100)}
+\end{tablenotes}
+\end{table}
 
 \hypertarget{confirmatory-findings-for-training-outcomes}{%
 \subsection{Confirmatory findings for training outcomes}\label{confirmatory-findings-for-training-outcomes}}
