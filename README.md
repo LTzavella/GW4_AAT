@@ -15,3 +15,6 @@
 * If you wish to check the pre-processing steps or make alterations, please open the 'GW4_Analyses.RProj' and in your R session select the script '1.Pre_processing.Rmd'.
 * This script will require the raw_data folder as mentioned above and the summary_processed.csv file. It will produce the same summary files for analyses.
 
+### Preprint materials
+
+> We have used the *papaja* package (https://github.com/crsh/papaja) for our preprint preparation.
