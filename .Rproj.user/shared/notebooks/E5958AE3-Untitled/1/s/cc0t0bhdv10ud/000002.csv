@@ -1,0 +1,6 @@
+"0","```r
+eet_data <- transform_x(eet_data$expressions.min_eval, eet_data$expressions.max_eval, eet_data$values.mousex, eet_data)
+
+write.table(eet_data, file=\"eet_data.csv\", row.names = FALSE)
+
+```"

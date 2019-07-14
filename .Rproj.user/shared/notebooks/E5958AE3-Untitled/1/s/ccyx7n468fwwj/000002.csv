@@ -1,0 +1,7 @@
+"0","```r
+
+all_data$lag_rt <- shift(all_data$values.total_rt, 3)
+
+all_data$goRT <- ifelse(all_data$values.stopping==1 & all_data$values.nomovement==3 & all_data$values.target_reached==1, all_data$lag_rt, \"0\")
+
+```"

@@ -1,0 +1,159 @@
+"0","```r
+#Convert lists into dataframes 
+
+tas <- ldply(tas, as.data.frame)
+des <- ldply(des, as.data.frame)
+
+#Make datasets for healthy and unhealthy food trials
+
+tas_h <- subset(tas, healthiness==1)
+tas_u <- subset(tas, healthiness==2)
+des_h <- subset(des, healthiness==1)
+des_u <- subset(des, healthiness==2)
+
+#Analyses for H1   
+
+#Tastiness ratings - unhealthy foods
+tas_u1 <- lmBF(data=tas_u, newx ~ values.current_group * selection * novelty + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+tas_u2 <- lmBF(data=tas_u, newx ~ values.current_group * selection + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+tas_u3 <- lmBF(data=tas_u, newx ~ values.current_group * novelty + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+tas_u4 <- lmBF(data=tas_u, newx ~ values.current_group + novelty * selection + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+tas_u5 <- lmBF(data=tas_u, newx ~ values.current_group * novelty + selection + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+tas_u6 <- lmBF(data=tas_u, newx ~ values.current_group * selection + novelty + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+tas_u7 <- lmBF(data=tas_u, newx ~ values.current_group + selection + novelty + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+tas_u8 <- lmBF(data=tas_u, newx ~ values.current_group + selection + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+tas_u9 <- lmBF(data=tas_u, newx ~ values.current_group + novelty + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+tas_u10 <- lmBF(data=tas_u, newx ~ values.current_group + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+
+lm1 <- glmer(data=tas_u, newx ~ values.current_group * selection + (1|item) + (1|unique_ID))
+
+#Get ouput for all 'tas_u' models
+tas_u_all <- c(tas_u1, tas_u2, tas_u3, tas_u4, tas_u5, tas_u6, tas_u7, tas_u8, tas_u9, tas_u10)
+tas_u_all
+
+#Bayesian t-tests
+tas_ut1 <- ttestBF(tas_u$newx[tas_u$values.current_group==3], tas_u$newx[tas_u$values.current_group==1], paired=FALSE, nullInterval = c(-Inf, 0))
+
+tas_ut2 <- ttestBF(tas_u$newx[tas_u$values.current_group==2], tas_u$newx[tas_u$values.current_group==1], paired=FALSE, nullInterval = c(-Inf, 0))
+
+tas_ut3 <- ttestBF(tas_u$newx[tas_u$values.current_group==3 & tas_u$selection==1], tas_u$newx[tas_u$values.current_group==1 & tas_u$selection==1], paired=FALSE, nullInterval = c(-Inf, 0))
+
+tas_ut4 <- ttestBF(tas_u$newx[tas_u$values.current_group==3 & tas_u$selection==2], tas_u$newx[tas_u$values.current_group==1 & tas_u$selection==2], paired=FALSE, nullInterval = c(-Inf, 0))
+
+tas_ut5 <- ttestBF(tas_u$newx[tas_u$values.current_group==3 & tas_u$selection==1 & tas_u$novelty==1], tas_u$newx[tas_u$values.current_group==1 & tas_u$selection==1 & tas_u$novelty==1], paired=FALSE, nullInterval = c(-Inf, 0))
+
+tas_ut6 <- ttestBF(tas_u$newx[tas_u$values.current_group==3 & tas_u$selection==1 & tas_u$novelty==2], tas_u$newx[tas_u$values.current_group==1 & tas_u$selection==1 & tas_u$novelty==2], paired=FALSE, nullInterval = c(-Inf, 0))
+
+tas_ut7 <- ttestBF(tas_u$newx[tas_u$values.current_group==3 & tas_u$selection==2 & tas_u$novelty==1], tas_u$newx[tas_u$values.current_group==1 & tas_u$selection==2 & tas_u$novelty==1], paired=FALSE, nullInterval = c(-Inf, 0))
+
+tas_ut8 <- ttestBF(tas_u$newx[tas_u$values.current_group==3 & tas_u$selection==2 & tas_u$novelty==2], tas_u$newx[tas_u$values.current_group==1 & tas_u$selection==2 & tas_u$novelty==2], paired=FALSE, nullInterval = c(-Inf, 0))
+#####
+
+classical.test = t.test(tas_u$newx[tas_u$values.current_group==3 & tas_u$selection==1 & tas_u$novelty==2], tas_u$newx[tas_u$values.current_group==1 & tas_u$selection==1 & tas_u$novelty==2], data = tas_u, var.eq = TRUE)
+
+classical.test
+
+#Check evidence for the null (example)
+
+1/tas_ut2[1]
+
+#Desire to eat ratings - unhealthy foods
+des_u1 <- lmBF(data=des_u, newx ~ values.current_group * selection * novelty + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+des_u2 <- lmBF(data=des_u, newx ~ values.current_group * selection + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+des_u3 <- lmBF(data=des_u, newx ~ values.current_group * novelty + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+des_u4 <- lmBF(data=des_u, newx ~ values.current_group + novelty * selection + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+des_u5 <- lmBF(data=des_u, newx ~ values.current_group * novelty + selection + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+des_u6 <- lmBF(data=des_u, newx ~ values.current_group * selection + novelty + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+des_u7 <- lmBF(data=des_u, newx ~ values.current_group + selection + novelty + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+des_u8 <- lmBF(data=des_u, newx ~ values.current_group + selection + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+des_u9 <- lmBF(data=des_u, newx ~ values.current_group + novelty + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+des_u10 <- lmBF(data=des_u, newx ~ values.current_group + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+
+#Get ouput for all 'des_u' models
+des_u_all <- c(des_u1, des_u2, des_u3, des_u4, des_u5, des_u6, des_u7, des_u8, des_u9, des_u10)
+des_u_all
+
+#Bayesian t-tests
+des_ut1 <- ttestBF(des_u$newx[des_u$values.current_group==3], des_u$newx[des_u$values.current_group==1], paired=FALSE, nullInterval = c(-Inf, 0))
+
+des_ut2 <- ttestBF(des_u$newx[des_u$values.current_group==2], des_u$newx[des_u$values.current_group==1], paired=FALSE, nullInterval = c(-Inf, 0))
+
+des_ut3 <- ttestBF(des_u$newx[des_u$values.current_group==3 & des_u$selection==1], des_u$newx[des_u$values.current_group==1 & des_u$selection==1], paired=FALSE, nullInterval = c(-Inf, 0))
+
+des_ut4 <- ttestBF(des_u$newx[des_u$values.current_group==3 & des_u$selection==2], des_u$newx[des_u$values.current_group==1 & des_u$selection==2], paired=FALSE, nullInterval = c(-Inf, 0))
+
+des_ut5 <- ttestBF(des_u$newx[des_u$values.current_group==3 & des_u$selection==1 & des_u$novelty==1], des_u$newx[des_u$values.current_group==1 & des_u$selection==1 & des_u$novelty==1], paired=FALSE, nullInterval = c(-Inf, 0))
+
+des_ut6 <- ttestBF(des_u$newx[des_u$values.current_group==3 & des_u$selection==1 & des_u$novelty==2], des_u$newx[des_u$values.current_group==1 & des_u$selection==1 & des_u$novelty==2], paired=FALSE, nullInterval = c(-Inf, 0))
+
+des_ut7 <- ttestBF(des_u$newx[des_u$values.current_group==3 & des_u$selection==2 & des_u$novelty==1], des_u$newx[des_u$values.current_group==1 & des_u$selection==2 & des_u$novelty==1], paired=FALSE, nullInterval = c(-Inf, 0))
+
+des_ut8 <- ttestBF(des_u$newx[des_u$values.current_group==3 & des_u$selection==2 & des_u$novelty==2], des_u$newx[des_u$values.current_group==1 & des_u$selection==2 & des_u$novelty==2], paired=FALSE, nullInterval = c(-Inf, 0))
+
+#Tastiness ratings - healthy foods
+tas_h1 <- lmBF(data=tas_h, newx ~ values.current_group * selection * novelty + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+tas_h2 <- lmBF(data=tas_h, newx ~ values.current_group * selection + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+tas_h3 <- lmBF(data=tas_h, newx ~ values.current_group * novelty + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+tas_h4 <- lmBF(data=tas_h, newx ~ values.current_group + novelty * selection + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+tas_h5 <- lmBF(data=tas_h, newx ~ values.current_group * novelty + selection + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+tas_h6 <- lmBF(data=tas_h, newx ~ values.current_group * selection + novelty + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+tas_h7 <- lmBF(data=tas_h, newx ~ values.current_group + selection + novelty + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+tas_h8 <- lmBF(data=tas_h, newx ~ values.current_group + selection + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+tas_h9 <- lmBF(data=tas_h, newx ~ values.current_group + novelty + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+tas_h10 <- lmBF(data=tas_h, newx ~ values.current_group + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+
+#Get ouput for all models
+tas_h_all <- c(tas_h1, tas_h2, tas_h3, tas_h4, tas_h5, tas_h6, tas_h7, tas_h8, tas_h9, tas_h10)
+tas_h_all
+
+#Bayesian t-tests
+tas_ht1 <- ttestBF(tas_h$newx[tas_h$values.current_group==3], tas_h$newx[tas_h$values.current_group==1], paired=FALSE, nullInterval = c(-Inf, 0))
+
+tas_ht2 <- ttestBF(tas_h$newx[tas_h$values.current_group==2], tas_h$newx[tas_h$values.current_group==1], paired=FALSE, nullInterval = c(-Inf, 0))
+
+tas_ht3 <- ttestBF(tas_h$newx[tas_h$values.current_group==3 & tas_h$selection==1], tas_h$newx[tas_h$values.current_group==1 & tas_h$selection==1], paired=FALSE, nullInterval = c(-Inf, 0))
+
+tas_ht4 <- ttestBF(tas_h$newx[tas_h$values.current_group==3 & tas_h$selection==2], tas_h$newx[tas_h$values.current_group==1 & tas_h$selection==2], paired=FALSE, nullInterval = c(-Inf, 0))
+
+tas_ht5 <- ttestBF(tas_h$newx[tas_h$values.current_group==3 & tas_h$selection==1 & tas_h$novelty==1], tas_h$newx[tas_h$values.current_group==1 & tas_h$selection==1 & tas_h$novelty==1], paired=FALSE, nullInterval = c(-Inf, 0))
+
+tas_ht6 <- ttestBF(tas_h$newx[tas_h$values.current_group==3 & tas_h$selection==1 & tas_h$novelty==2], tas_h$newx[tas_h$values.current_group==1 & tas_h$selection==1 & tas_h$novelty==2], paired=FALSE, nullInterval = c(-Inf, 0))
+
+tas_ht7 <- ttestBF(tas_h$newx[tas_h$values.current_group==3 & tas_h$selection==2 & tas_h$novelty==1], tas_h$newx[tas_h$values.current_group==1 & tas_h$selection==2 & tas_h$novelty==1], paired=FALSE, nullInterval = c(-Inf, 0))
+
+tas_ht8 <- ttestBF(tas_h$newx[tas_h$values.current_group==3 & tas_h$selection==2 & tas_h$novelty==2], tas_h$newx[tas_h$values.current_group==1 & tas_h$selection==2 & tas_h$novelty==2], paired=FALSE, nullInterval = c(-Inf, 0))
+#####
+
+
+#Desire to eat ratings
+des_h1 <- lmBF(data=des_h, newx ~ values.current_group * selection * novelty + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+des_h2 <- lmBF(data=des_h, newx ~ values.current_group * selection + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+des_h3 <- lmBF(data=des_h, newx ~ values.current_group * novelty + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+des_h4 <- lmBF(data=des_h, newx ~ values.current_group + novelty * selection + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+des_h5 <- lmBF(data=des_h, newx ~ values.current_group * novelty + selection + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+des_h6 <- lmBF(data=des_h, newx ~ values.current_group * selection + novelty + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+des_h7 <- lmBF(data=des_h, newx ~ values.current_group + selection + novelty + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+des_h8 <- lmBF(data=des_h, newx ~ values.current_group + selection + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+des_h9 <- lmBF(data=des_h, newx ~ values.current_group + novelty + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+des_h10 <- lmBF(data=des_h, newx ~ values.current_group + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+
+#Get ouput for all models
+des_h_all <- c(des_h1, des_h2, des_h3, des_h4, des_h5, des_h6, des_h7, des_h8, des_h9, des_h10)
+des_h_all
+
+BF_eet1 <- lmBF(data=eet_data, newx ~ healthiness * values.current_group * selection * novelty + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+
+BF_eet2 <- lmBF(data=eet_data, newx ~ healthiness * values.current_group * selection + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+
+BF_eet3 <- lmBF(data=eet_data, newx ~ healthiness * values.current_group * selection + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+
+BF_eetx <- lmBF(data=eet_data, newx ~ values.current_group + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+
+BF_tas1 <- lmBF(data=eet_data2, newx ~ healthiness * values.current_group * selection * novelty + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+
+BF_tas2 <- lmBF(data=eet_data2, newx ~ values.current_group + item + unique_ID, whichRandom = c(\"item\", \"unique_ID\"))
+
+
+
+lmBF(data=)
+```"

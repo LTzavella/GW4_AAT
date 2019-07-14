@@ -1,0 +1,28 @@
+"0","```r
+group1 <- group1[sapply(group1, function(x) any(x$values.psych_disorders==2))]
+group1 <- group1[sapply(group1, function(x) any(x$values.psych_drugs==\"None\"))]
+group1 <- group1[sapply(group1, function(x) any(x$values.eating==4))]
+
+group2 <- group2[sapply(group2, function(x) any(x$values.psych_disorders==2))]
+group2 <- group2[sapply(group2, function(x) any(x$values.psych_drugs==\"None\"))]
+group2 <- group2[sapply(group2, function(x) any(x$values.eating==4))]
+
+group3 <- group3[sapply(group3, function(x) any(x$values.psych_disorders==2))]
+group3 <- group3[sapply(group3, function(x) any(x$values.psych_drugs==\"None\"))]
+group3 <- group3[sapply(group3, function(x) any(x$values.eating==4))]
+
+#It works! -- #DEMOGRAPHICS FILE NOT IN HERE!
+
+veg_include <- unique(demographics$subject[demographics$vegan_criterion_response==2])
+psych_include <- unique(demographics$subject[demographics$psych_disorders_criterion_response==2])
+drug_include <- unique(demographics$subject[demographics$psych_drugs_criterionoption4_response==\"None\"])
+
+group1 <- group1[sapply(group1, function (x) any(x$subject %in% veg_include))]
+group1 <- group1[sapply(group1, function (x) any(x$subject %in% veg_include))]
+group1 <- group1[sapply(group1, function (x) any(x$subject %in% veg_include))]
+
+
+test <- all_data[sapply(all_data, function(x) any(x$latency[x$values.frame_go==4]==17))]
+test2 <- all_data[sapply(all_data, function(x) any(x$latency[x$values.frame_signal==2]==50))]
+
+```"

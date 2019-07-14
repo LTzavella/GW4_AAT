@@ -1,0 +1,11 @@
+"0","```r
+#Save names of all csv files from project subdirectory
+
+files <- list.files(here(\"all_csvs\"), all.files = TRUE, full.names = FALSE, no.. = TRUE, pattern = \"\\csv$\")
+
+#Read all csv files into a list of dataframes 
+
+data <- lapply(here(\"all_csvs\", files), function(x) {fread(x)})
+
+data <- lapply(data, function(x) as.data.frame(x))
+```"

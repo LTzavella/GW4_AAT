@@ -1,0 +1,8 @@
+"0","```r
+#Create a list for all data frames 
+dfs <- Filter(function(x) is(x, \"data.frame\"), mget(ls()))
+
+
+#Combine all data frames (by row)
+all_data <- do.call(rbind, dfs)
+```"

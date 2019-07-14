@@ -1,0 +1,40 @@
+"0","```r
+#Load csv file with all survey data. Note that N differs as all responses have been recorded (incomplete, crashes etc.).
+
+survey <- read.csv(here(\"demographics.csv\"), header=T)
+
+#Make unique IDs to deal with subject ID duplicates created during lab testing
+
+survey$unique_ID = paste(survey$subject, survey$time)
+
+data <- lapply(data, function(x) cbind(x, unique_ID = paste(x$subject, x$script.starttime)))
+
+#Assign names to the list elements (subject IDs) in case exclusions need to be checked manually
+
+subs <- lapply(data, function(x) head(x$unique_ID, n=1))
+subs <- lapply(subs, function(x) as.character(x))
+names(data) <- subs
+
+#Obtain subject IDs for eligible participants [keep lists with IDs for potential exploratory analyses]
+
+veg_IDs <- unique(survey$unique_ID[survey$vegan_criterion_response==2])
+psych_IDs <- unique(survey$unique_ID[survey$psych_disorders_criterion_response==2])
+drug_IDs <- unique(survey$unique_ID[survey$psych_drugs_criterionoption4_response==\"None\"])
+
+#Select data files from eligible participants into a new list called 'main'
+#Eating disorders were recorded as part of the eligibility survey so data can be found in the main data files only
+
+main <- data[sapply(data, function (x) any(x$unique_ID %in% veg_IDs))]
+main <- main[sapply(main, function (x) any(x$unique_ID %in% psych_IDs))]
+main <- main[sapply(main, function (x) any(x$unique_ID %in% drug_IDs))]
+
+main <- main[sapply(main, function(x) any(x$values.eating==4))]
+
+#Select data files with correct refresh frames (the 4th frame is random- anything after the 2nd frame is acceptable)
+
+main <- main[sapply(main, function(x) any(x$latency[x$values.frame_go==4]==17))]
+
+#Add a new column to the data for ITI durations
+
+main <- lapply(main, transform, iti_check = ifelse(values.iti<=850 & values.iti>600, \"700\", ifelse(values.iti>400 & values.iti<600, \"500\", \"NA\")))
+```"

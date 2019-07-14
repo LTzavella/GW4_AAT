@@ -1,0 +1,68 @@
+"0","```r
+training_data <- lapply(all_data, subset, (blockcode==\"go_training\" | blockcode==\"stop_training\" | blockcode==\"change_training\"))
+go_test_data <- lapply(all_data, subset, blockcode==\"go_test\")
+
+
+group1_train <- lapply(group1, subset, blockcode==\"go_training\")
+group2_train <- lapply(group2, subset, blockcode==\"stop_training\")
+group3_train <- lapply(group3, subset, blockcode==\"change_training\")
+
+#Recode accuracy values to only have 1s (correct) and 0s (incorrect)
+
+group1_train <- lapply(group1_train, transform, accuracy = ifelse(values.ns_accuracy==1, \"1\", \"0\"))
+
+group2_train <- lapply(group2_train, transform, ns_accuracy = ifelse(values.ns_accuracy==1, \"1\", \"0\"))
+group2_train <- lapply(group2_train, transform, ss_accuracy = ifelse(values.ss_accuracy==1, \"1\", \"0\"))
+
+group3_train <- lapply(group3_train, transform, ns_accuracy = ifelse(values.ns_accuracy==1, \"1\", \"0\"))
+group3_train <- lapply(group3_train, transform, sc_accuracy = ifelse(values.sc_accuracy==1, \"1\", \"0\"))
+
+#If values.iti is judged and not only values.trial_ms then we can apply this to the go_test and eval_task data 
+group1_train <- lapply(group1_train, transform, iti_check = ifelse(values.iti<800 & values.iti>600, \"700\", ifelse(values.iti>400 & values.iti<600, \"500\", \"NA\")))
+
+group2_train <- lapply(group2_train, transform, iti_check = ifelse(values.iti<800 & values.iti>600, \"700\", ifelse(values.iti>400 & values.iti<600, \"500\", \"NA\")))
+
+group3_train <- lapply(group3_train, transform, iti_check = ifelse(values.iti<800 & values.iti>600, \"700\", ifelse(values.iti>400 & values.iti<600, \"500\", \"NA\")))
+
+#Change accuracy variable structure into integer format 
+
+group1_train <- lapply(group1_train, transform, accuracy = as.numeric(as.character(accuracy)))
+
+group2_train <- lapply(group2_train, transform, ns_accuracy = as.numeric(as.character(ns_accuracy)))
+group2_train <- lapply(group2_train, transform, ss_accuracy = as.numeric(as.character(ss_accuracy)))
+
+group3_train <- lapply(group3_train, transform, ns_accuracy = as.numeric(as.character(ns_accuracy)))
+group3_train <- lapply(group3_train, transform, sc_accuracy = as.numeric(as.character(sc_accuracy)))
+
+
+#For participant exclusions we only need to know the 'length' of removed elements from each type of task- see criteria above
+
+###
+
+group1_train_acc <- lapply(group1_train, subset, values.frame_go==112 | values.frame_signal==112)
+group1_train_acc  <- lapply(group1_train_acc , droplevels)
+
+group2_train_acc <- lapply(group2_train, subset, values.frame_go==112 | values.frame_signal==112)
+group2_train_acc  <- lapply(group2_train_acc , droplevels)
+
+group3_train_acc <- lapply(group3_train, subset, values.frame_go==112 | values.frame_signal==112)
+group3_train_acc  <- lapply(group3_train_acc , droplevels)
+
+
+group1_means <- ldply(group1_train_acc, function(x) goPC= mean(x$accuracy))
+group2_means <- ldply(group2_train_acc, function(x) {c(stopPC = mean(x$ss_accuracy[x$values.frame_signal==112]), goPC = mean(x$ns_accuracy[x$values.frame_go==112]))})
+group3_means <- ldply(group3_train_acc, function(x) {c(changePC = mean(x$sc_accuracy[x$values.frame_signal==112]), goPC = mean(x$ns_accuracy[x$values.frame_go==112]))})
+
+
+train_include <- unique(means$.id[means$V1>=0.85])
+
+#This doesn't give us the subject IDs- you can subset the whole element though and select only the names to be included
+#e.g., sub001 is the .id name from the accuracy data frame but also the name of the dataframe within the list corresponding to that participant 
+
+
+test3 <- subset(group1_train, names(group1_train) %in% train_include)
+
+
+
+#refactor all variables
+```"
