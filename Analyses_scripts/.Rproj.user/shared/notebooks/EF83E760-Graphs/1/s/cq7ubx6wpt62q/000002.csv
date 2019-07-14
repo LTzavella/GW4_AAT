@@ -1,0 +1,5 @@
+"0","packages <- c(""ggplot2"", ""dplyr"", ""lavaan"", ""plyr"", ""cowplot"", ""rmarkdown"", "
+"0","              ""readr"", ""caTools"", ""bitops"")"
+"0","if (length(setdiff(packages, rownames(installed.packages()))) > 0) {"
+"0","  install.packages(setdiff(packages, rownames(installed.packages())))  "
+"0","}"

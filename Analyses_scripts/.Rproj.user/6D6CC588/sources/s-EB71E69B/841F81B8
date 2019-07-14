@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1563101406072.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2224499906",
+    "id" : "841F81B8",
+    "lastKnownWriteTime" : 1563101944,
+    "last_content_update" : 1563114691107,
+    "path" : "~/Documents/GitHub/GW4_AAT/Analyses_scripts/1.Pre_processing.Rmd",
+    "project_path" : "1.Pre_processing.Rmd",
+    "properties" : {
+        "cursorPosition" : "343,32",
+        "scrollLine" : "321"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

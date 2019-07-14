@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1563110025485.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "61BEF844",
+    "lastKnownWriteTime" : 6,
+    "last_content_update" : 1563110025485,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "C03C98F1",
+        "caption" : "sumrepdat",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=sumrepdat&cache_key=C03C98F1",
+        "displayedObservations" : 6,
+        "environment" : "",
+        "object" : "sumrepdat",
+        "preview" : 0,
+        "totalObservations" : 6,
+        "variables" : 8
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

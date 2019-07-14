@@ -1,0 +1,3 @@
+"0","  # geom_errorbar(data = sum_bias, aes(x = as.numeric(Training_condition)+.1, y = Bias_score_mean, group = Time, colour = Time, ymin = Bias_score_mean-sd, ymax = Bias_score_mean+s), width = .05)"
+"0","  #geom_point(data = sum_bias, aes(x = as.numeric(Training_condition)+.1, y = Bias_score_mean, group = Time, colour = Time), shape = 18)"
+"0","ggsave('graphs/bias_raincloud.png', dpi = 300, width = 10, height=7)"

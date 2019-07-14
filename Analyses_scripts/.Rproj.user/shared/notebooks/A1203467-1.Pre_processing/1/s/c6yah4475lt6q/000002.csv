@@ -1,5 +1,0 @@
-"0","#'Normalise' food choices according to the total number of responses per participant (i.e., proportion)"
-"0","sum <- read.csv(file=here(""summary_processed.csv""))"
-"2","cannot open file '/Users/loukia/Documents/GitHub/GW4_AAT/Analyses scripts/summary_processed.csv': No such file or directory"
-"2","Error in file(file, ""rt"") : cannot open the connection
-"
