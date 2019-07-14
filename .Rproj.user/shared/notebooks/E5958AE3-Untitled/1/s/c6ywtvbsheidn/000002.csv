@@ -1,3 +1,0 @@
-"0","```r
-eet_data <- subset(eet_data, eet_data$values.dummy_trial==2) #This will change later maybe to be according to trialnumbers
-```"

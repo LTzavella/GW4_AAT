@@ -1,5 +1,0 @@
-"0","```r
-group1 <- all_data[sapply(all_data, function(x) all(x$values.current_group == 1))]
-group2 <- all_data[sapply(all_data, function(x) all(x$values.current_group == 2))]
-group3 <- all_data[sapply(all_data, function(x) all(x$values.current_group == 3))]
-```"

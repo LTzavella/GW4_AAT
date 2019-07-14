@@ -1,4 +1,0 @@
-"0","```r
-all_data <- transform(all_data, script.subjectid=as.numeric(factor(script.subjectid)))
-all_data$script.subjectid <- as.factor(all_data$script.subjectid)
-```"

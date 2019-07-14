@@ -1,6 +1,0 @@
-"0","```r
-pew <- anovaBF(data=eet_data, newx ~ values.eval_healthiness * values.current_group * values.eval_selection)
-
-summary(pew)
-
-```"
