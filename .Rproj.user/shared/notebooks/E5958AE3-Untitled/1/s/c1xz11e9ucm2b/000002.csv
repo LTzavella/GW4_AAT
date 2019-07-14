@@ -1,3 +1,0 @@
-"0","```r
-eet_data<- subset(all_data, all_data$values.marker==2)
-```"

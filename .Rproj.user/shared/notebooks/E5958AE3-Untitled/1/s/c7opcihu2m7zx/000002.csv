@@ -1,7 +1,0 @@
-"0","```r
-plot(eet_data$newx[[eet_data$values.eval_healthiness==2]])
-
-mean_data <- aggregate(newx ~ values.eval_healthiness * values.eval_selection * values.eval_novelty* values.current_group, data=eet_data, mean)
-write.table(mean_data, file=\"mean_data.csv\", row.names = FALSE)
-
-```"
