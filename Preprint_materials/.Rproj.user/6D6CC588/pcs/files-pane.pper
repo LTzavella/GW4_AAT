@@ -1,6 +1,10 @@
 {
-    "path" : "~/Documents/GitHub/GW4_AAT/Preprint materials",
+    "path" : "~/Documents/GitHub/GW4_AAT/Preprint_materials",
     "sortOrder" : [
+        {
+            "ascending" : false,
+            "columnIndex" : 4
+        },
         {
             "ascending" : true,
             "columnIndex" : 2

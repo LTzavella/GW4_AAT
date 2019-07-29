@@ -1,9 +1,0 @@
-"0","# Create subsetfor correct responses only to measure RT outcomes"
-"0","AAT_RTs <- lapply(AAT_acc, subset, accuracy==1)"
-"0","#Recode accuracy values into 0s and 1s to get mean error rates"
-"0","AAT_ERs <- lapply(AAT_acc, transform, accuracy = as.integer(ifelse(accuracy==1, ""0"", ""1"")))"
-"0","AAT_RTs <- ldply(AAT_RTs, fun_AAT_RTs)"
-"0","AAT_ERs <- ldply(AAT_ERs, fun_AAT_ERs)"
-"0","AAT_sum <- cbind(AAT_RTs, AAT_ERs[2:19])"
-"2","Error in `[.data.frame`(AAT_ERs, 2:19) : undefined columns selected
-"

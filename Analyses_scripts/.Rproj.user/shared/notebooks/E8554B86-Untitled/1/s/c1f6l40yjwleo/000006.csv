@@ -1,0 +1,5 @@
+"0","yuens$xi <- c(H1aY$effsize, H3aY$effsize, H3bY$effsize, H4aY$conf.int)
+"
+"2","Error in `$<-.data.frame`(`*tmp*`, xi, value = c(0.0710314372705337, 0.1027865297144,  : 
+  replacement has 5 rows, data has 4
+"

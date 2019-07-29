@@ -1,0 +1,3 @@
+]0;~/Documents/GitHub/GW4_AAT/Analyses_scripts[?1034hLoukias-MBP-5:Analyses_scripts loukia$   theme(strip.text.x = element_text(margi n = margin(0.3,0,0.3,0, "cm")), legend.text.align = 1, legend.position = "bottom ", legend.spacing.x = element_text(size=2)) 
+bash: syntax error near unexpected token `strip.text.x'
+]0;~/Documents/GitHub/GW4_AAT/Analyses_scriptsLoukias-MBP-5:Analyses_scripts loukia$ [KLoukias-MBP-5:Analyses_scripts loukia$ topxcode-select --installquit[K[K[KLoukias-MBP-5:Analyses_scripts loukia$ q[KLoukias-MBP-5:Analyses_scripts loukia$ q

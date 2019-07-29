@@ -1,0 +1,5 @@
+"0","sum_gng_PEs <- summarySE(block_PEs_graph, measurevar = ""PC"", groupvars=c(""trial_type"", ""blocks""))
+"
+"2","Error in summarySE(block_PEs_graph, measurevar = ""PC"", groupvars = c(""trial_type"",  : 
+  could not find function ""summarySE""
+"

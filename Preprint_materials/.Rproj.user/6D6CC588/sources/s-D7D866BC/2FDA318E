@@ -1,0 +1,27 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1563100046952.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "2FDA318E",
+    "lastKnownWriteTime" : 1564440751,
+    "last_content_update" : 1564440751015,
+    "path" : "~/Documents/GitHub/GW4_AAT/Preprint_materials/GW4_AAT_Preprint.Rmd",
+    "project_path" : "GW4_AAT_Preprint.Rmd",
+    "properties" : {
+        "cursorPosition" : "467,0",
+        "docOutlineSize" : "151",
+        "docOutlineVisible" : "1",
+        "scrollLine" : "467"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

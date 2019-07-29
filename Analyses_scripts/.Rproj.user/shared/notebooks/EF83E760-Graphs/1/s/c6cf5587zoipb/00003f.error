@@ -1,0 +1,1 @@
+{"frames":[],"message":"Error in summarySE(block_PEs_graph, measurevar = \"PC\", groupvars = c(\"trial_type\",  : \n  could not find function \"summarySE\"\n"}

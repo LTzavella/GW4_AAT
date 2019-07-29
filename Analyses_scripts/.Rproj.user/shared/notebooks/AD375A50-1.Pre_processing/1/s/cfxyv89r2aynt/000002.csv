@@ -1,7 +1,0 @@
-"0","files <- list.files(here(""raw_data/""), all.files = TRUE, full.names = FALSE, no.. = TRUE, pattern = ""\\.csv$"")"
-"0","data <- lapply(here(""raw_data/"", files), function(x) {fread(x)})"
-"0","data <- lapply(data, function(x) as.data.frame(x))"
-"0","#Assign names to the list elements (subject IDs)"
-"0","IDs <- lapply(data, function(x) head(x$script.subjectid, n=1))"
-"0","IDs <- lapply(IDs, function(x) as.character(x))"
-"0","names(data) <- IDs"

@@ -1,0 +1,4 @@
+"0","all_data <- read.csv(here(""csvs/all_data.csv""))
+"
+"2","Error in here(""csvs/all_data.csv"") : could not find function ""here""
+"

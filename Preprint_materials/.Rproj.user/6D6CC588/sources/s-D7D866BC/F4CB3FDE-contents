@@ -1,0 +1,23 @@
+---
+title: "Supplementary Material"
+output: pdf_document
+
+header-includes:
+- \usepackage{xcolor}
+- \usepackage{multicol}
+- \usepackage{enumitem}
+  \setlist{nosep}
+- \usepackage[font=footnotesize,labelfont=bf]{caption}
+- \usepackage{float}
+- \usepackage{amsmath}
+- \usepackage{soul}
+- \usepackage{caption}
+- \usepackage{booktabs}
+---
+
+
+> Keep Rmd for potential Supplementary Material after review. 
+
+
+
+

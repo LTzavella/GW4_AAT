@@ -1,0 +1,247 @@
+---
+title: "Exploratory analyses"
+author: "Loukia Tzavella"
+date: "22/07/2019"
+output: html_document
+---
+
+
+* Install and/or load required R packages 
+
+```{r warning=FALSE, message=FALSE}
+required.packages <- c("data.table", "plyr", "dplyr", "here", "tidyr", "AER", "WRS2")
+new.packages <- required.packages[!(required.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)>0) {install.packages(required.packages)}
+
+require(data.table)
+require(plyr)
+require(dplyr)
+require(here)
+require(tidyr)
+require(AER)
+require(WRS2)
+```
+
+```{r}
+source("Functions2.R")
+```
+
+If the R environment doesn't include csvs created from the first script (ie. 1.Pre-processing.Rmd)
+the necessary files need to be loaded here. 
+
+```{r}
+all_data <- read.csv(here("csvs/all_data.csv"))
+aat_sum <- read.csv(here("csvs/AAT_sum.csv"))
+```
+
+
+
+```{r}
+aat_sum$Pre.ER.Go =  aat_sum$Pre.Pull.Go.ER - aat_sum$Pre.Push.Go.ER
+aat_sum$Post.ER.Go =  aat_sum$Post.Pull.Go.ER - aat_sum$Post.Push.Go.ER
+
+aat_sum$Pre.ER.Nogo =  aat_sum$Pre.Pull.NoGo.ER - aat_sum$Pre.Push.NoGo.ER
+aat_sum$Post.ER.Nogo =  aat_sum$Post.Pull.NoGo.ER - aat_sum$Post.Push.NoGo.ER
+
+aat_sum$Pre.ER.Filler =  aat_sum$Pre.Pull.Filler.ER - aat_sum$Pre.Push.Filler.ER
+aat_sum$Post.ER.Filler =  aat_sum$Post.Pull.Filler.ER - aat_sum$Post.Push.Filler.ER
+
+aat_sum$DER_Go = aat_sum$Post.ER.Go - aat_sum$Pre.ER.Go
+aat_sum$DER_Nogo = aat_sum$Post.ER.Nogo - aat_sum$Pre.ER.Nogo
+aat_sum$DER_Filler = aat_sum$Post.ER.Filler - aat_sum$Pre.ER.Filler
+
+write.csv(aat_sum, file=here("csvs", "aat_full.csv"), row.names = FALSE)
+
+```
+
+Sub-group analyses
+```{r}
+pos_bias <- subset(all_data, (Pre.Push.RT - Pre.Pull.RT) > 0)
+neg_bias <- subset(all_data, (Pre.Push.RT - Pre.Pull.RT) < 0)
+
+#zero_bias <- subset(all_data, (Pre.Push.RT - Pre.Pull.RT) == 0)
+
+write.csv(pos_bias, file=here("csvs", "pos_bias.csv"), row.names = FALSE)
+write.csv(neg_bias, file=here("csvs", "neg_bias.csv"), row.names = FALSE)
+```
+
+exploratory: block-by-block gng learning effects  
+```{r}
+#Create block numbers for the GNG data
+gng <- lapply(gng, transform, block = c(rep.int(1, 36), rep.int(2, 36), rep.int(3, 36), rep.int(4, 36), rep.int(5, 36), rep.int(6, 36)))
+
+gng_cor <-lapply(gng, subset, values.gng_correct==1)
+
+block_RTs <- ldply(gng_cor, fun_gng_RTs_blocks)
+block_RTs <- subset(block_RTs, .id %in% inclIDs)
+
+block_RTs_graph <- tidyr::gather(block_RTs, 2:13, key="condition", value="GoRT")
+block_RTs_graph$trial_type <- ifelse(grepl('Filler', block_RTs_graph$condition) == TRUE, "No-signal trial (control)", "No-signal trial (go)")
+block_RTs_graph$block <- ifelse(grepl('B1', block_RTs_graph$condition) == TRUE, "1",
+                         ifelse(grepl('B2', block_RTs_graph$condition) == TRUE, "2", 
+                         ifelse(grepl('B3', block_RTs_graph$condition) == TRUE, "3",
+                         ifelse(grepl('B4', block_RTs_graph$condition) == TRUE, "4",
+                         ifelse(grepl('B5', block_RTs_graph$condition) == TRUE, "5","6")))))
+
+write.csv(block_RTs_graph, file=here("csvs", "block_RTs.csv"), row.names = FALSE)
+
+gng_pes <- lapply(gng, transform, accuracy = as.integer(ifelse(values.gng_correct==1, "0", "1")))
+
+block_PEs <- ldply(gng_pes, fun_gng_PEs_blocks)
+
+block_PEs <- subset(block_PEs, .id %in% inclIDs)
+
+block_PEs_graph <- tidyr::gather(block_PEs, 2:5, key="condition", value="PC")
+block_PEs_graph$PC = 1 - block_PEs_graph$PC
+
+block_PEs_graph$blocks <- ifelse(grepl('H1', block_PEs_graph$condition)==TRUE, "First", "Second")
+block_PEs_graph$trial_type <- ifelse(grepl('FillerNoGo', block_PEs_graph$condition)==TRUE, "Signal (control)","Signal (no-go)")
+
+write.csv(block_PEs_graph, file=here("csvs", "block_PEs.csv"), row.names = FALSE)
+
+####
+
+gng_graphs <- subset(GNG_sum, select=c(1, 9, 11))
+gng_graphs <- tidyr::gather(gng_graphs, c(2:3), key="condition", value="PCsignal")
+
+```
+
+```{r}
+AAT_cor <- lapply(AAT_acc, subset, accuracy==1)
+AAT_init <- ldply(AAT_cor, fun_AAT_init)
+
+#Bias score calculated as (MedianRTpush - MedianRTpull) for pre- and post- training and the a Delta AAT bias score is obtained
+
+AAT_init$Pre_Go_bias = (AAT_init$Pre.Push.Go.in - AAT_init$Pre.Pull.Go.in) 
+AAT_init$Pre_NoGo_bias = (AAT_init$Pre.Push.NoGo.in - AAT_init$Pre.Pull.NoGo.in) 
+AAT_init$Pre_Filler_bias = (AAT_init$Pre.Push.Filler.in - AAT_init$Pre.Pull.Filler.in)
+
+AAT_init$Post_Go_bias = (AAT_init$Post.Push.Go.in - AAT_init$Post.Pull.Go.in)
+AAT_init$Post_NoGo_bias = (AAT_init$Post.Push.NoGo.in - AAT_init$Post.Pull.NoGo.in)
+AAT_init$Post_Filler_bias = (AAT_init$Post.Push.Filler.in - AAT_init$Post.Pull.Filler.in)
+
+AAT_init$D_Go = (AAT_init$Post_Go_bias) - (AAT_init$Pre_Go_bias)
+AAT_init$D_NoGo = (AAT_init$Post_NoGo_bias) - (AAT_init$Pre_NoGo_bias)
+AAT_init$D_Filler = (AAT_init$Post_Filler_bias) - (AAT_init$Pre_Filler_bias)
+
+AAT_init$Pre_Bias = AAT_init$Pre.Push.in - AAT_init$Pre.Pull.in
+AAT_init$Post_Bias = AAT_init$Post.Push.in - AAT_init$Pre.Pull.in
+
+AAT_init$D_Bias <- AAT_init$Post_Bias - AAT_init$Pre_Bias
+
+#Export csv file
+write.csv(AAT_init, file=here("csvs", "aat_init.csv"), row.names = FALSE)
+```
+
+# Modelling food choice data
+
+```{r}
+choices<- tidyr::gather(data = all_data, key = condition, value = choices, na.rm = FALSE, Filler, Go, Nogo)
+
+#choices$delta_liking = ifelse(choices$condition=="Filler", choices$DLiking_Filler,
+                             # ifelse(choices$condition=="Go", choices$DLiking_Go, choices$DLiking_Nogo))
+
+choices$subj.number <- as.factor(choices$subj.number)
+choices$condition  <- as.factor(choices$condition)
+```
+
+```{r}
+m1 <- glm(choices ~ condition, data=choices, family = "poisson")
+
+summary(m1)
+```
+```{r}
+m1$converged
+```
+```{r}
+# This GLM uses a link function and these are log coefficients- we used the exp() function to get real values
+exp(m1$coefficients)
+```
+The model showed that impulsive choice probability for no-go foods was 0.53 times the choice proabbility for filler foods (i.e., reduced compared to control); *p* < .001 . 
+
+```{r}
+par(mfrow=c(2,2))
+plot(m1)
+```
+
+
+
+```{r}
+#test for overdispersion
+dispersiontest(m1, alternative="greater")
+```
+
+* The residual deviance (i.e., deviance between current model and maximum deviance of ideal model where predicted values are identical to the observed)
+was lower than the residual degrees of freedom which suggests the model has good explanatory power. 
+* We can more formally use the residual deviance to perform a goodness of fit test for the overall model.
+* The model fits really well and the goodness-of-fit chi-squared test is not statistically significant.
+```{r}
+with(m1, cbind(res.deviance = deviance, df = df.residual, 
+                           p = pchisq(deviance, df.residual, lower.tail = FALSE)))
+```
+* 
+```{r}
+leveneTest(y = choices$choices, group = choices$condition)
+```
+
+* Due to mild violation of the homoskedasticity assumption, we will use robust standard errors for the parameter estimates using the 
+sandwich package. Code has been copied from https://stats.idre.ucla.edu/r/dae/poisson-regression/ 
+
+* We changed the output of p values from scientific notation to fixed number of decimals to ease interpretation
+
+```{r}
+cov.m1 <- vcovHC(m1, type="HC0")
+std.err <- sqrt(diag(cov.m1))
+r.est <- cbind(Estimate= coef(m1), "Robust SE" = std.err,
+"Pr(>|z|)" = round((2 * pnorm(abs(coef(m1)/std.err), lower.tail=FALSE)), 10),
+LL = coef(m1) - 1.96 * std.err,
+UL = coef(m1) + 1.96 * std.err)
+
+r.est
+```
+
+# Robust statistics: Yuen's tests for comparing trimmed means
+
+```{r}
+H1aY <- yuend(x=all_data$D_NoGo, y=all_data$D_Filler)
+
+H1aY  
+```
+
+
+```{r}
+H3aY <- yuend(x=all_data$DLiking_Nogo, y=all_data$DLiking_Filler)
+
+H3aY  
+```
+```{r}
+H3bY <- yuend(x=all_data$DLiking_Go, y=all_data$DLiking_Filler)
+
+H3bY  
+```
+
+```{r}
+H4aY <- yuend(x=all_data$FillerNoGo.PC, y=all_data$NoGo.PC)
+
+H4aY  
+```
+
+```{r}
+#put all results in a table
+yuens <- as.data.frame(matrix(nrow = 4, ncol = 8))
+
+cols <- c("H", "t", "df", "p", "md", "ll", "ul", "xi")
+names(yuens) <- cols
+
+yuens$H <- c("H1a", "H3a", "H3b", "H4a")
+yuens$t <- c(H1aY$test, H3aY$test, H3bY$test, H4aY$test)
+yuens$df <- c(H1aY$df, H3aY$df, H3bY$df, H4aY$df)
+yuens$p <- c(H1aY$p.value, H3aY$p.value, H3bY$p.value, H4aY$p.value)
+yuens$md <- c(H1aY$diff, H3aY$diff, H3bY$diff, H4aY$diff)
+yuens$ll <- c(H1aY$conf.int[1], H3aY$conf.int[1], H3bY$conf.int[1], H4aY$conf.int[1])
+yuens$ul <- c(H1aY$conf.int[2], H3aY$conf.int[2], H3bY$conf.int[2], H4aY$conf.int[2])
+yuens$xi <- c(H1aY$effsize, H3aY$effsize, H3bY$effsize, H4aY$effsize)
+
+#Export csv file
+write.csv(yuens, file=here("csvs", "yuens.csv"), row.names = FALSE)
+```
