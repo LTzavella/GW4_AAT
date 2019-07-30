@@ -1,5 +1,0 @@
-"0","all_data <- read.csv(here(""csvs/all_data.csv""))
-"
-"2","cannot open file '/Users/loukia/Documents/GitHub/GW4_AAT/Analyses_scripts/csvs/all_data.csv': No such file or directory"
-"2","Error in file(file, ""rt"") : cannot open the connection
-"

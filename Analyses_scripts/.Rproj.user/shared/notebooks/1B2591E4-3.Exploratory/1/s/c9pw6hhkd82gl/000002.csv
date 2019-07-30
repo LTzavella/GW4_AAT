@@ -1,0 +1,7 @@
+"0","pos_bias <- subset(all_data, (Pre.Push.RT - Pre.Pull.RT) > 0)"
+"0","neg_bias <- subset(all_data, (Pre.Push.RT - Pre.Pull.RT) < 0)"
+"0",""
+"0","#zero_bias <- subset(all_data, (Pre.Push.RT - Pre.Pull.RT) == 0)"
+"0",""
+"0","write.csv(pos_bias, file=here(""csvs"", ""pos_bias.csv""), row.names = FALSE)"
+"0","write.csv(neg_bias, file=here(""csvs"", ""neg_bias.csv""), row.names = FALSE)"

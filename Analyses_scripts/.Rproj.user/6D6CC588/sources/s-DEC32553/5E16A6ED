@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1564510047495.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2935851008",
+    "id" : "5E16A6ED",
+    "lastKnownWriteTime" : 1564440987,
+    "last_content_update" : 1564510060593,
+    "path" : "~/Documents/GitHub/GW4_AAT/Analyses_scripts/3.Exploratory.Rmd",
+    "project_path" : "3.Exploratory.Rmd",
+    "properties" : {
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

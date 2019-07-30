@@ -1,0 +1,4 @@
+"0","write.csv(AAT_sum, file = here(""csvs"", ""AAT_sum.csv""), row.names = FALSE)"
+"0","write.csv(GNG_sum, file = here(""csvs"", ""GNG_sum.csv""), row.names = FALSE)"
+"0",""
+"0","write.csv(AAT_sum_copy, file = here(""csvs"", ""AAT_sum_incl.csv""), row.names = FALSE)"
