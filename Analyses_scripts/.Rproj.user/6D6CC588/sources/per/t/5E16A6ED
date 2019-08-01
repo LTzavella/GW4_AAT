@@ -5,13 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "2935851008",
+    "hash" : "1438281754",
     "id" : "5E16A6ED",
-    "lastKnownWriteTime" : 1564440987,
-    "last_content_update" : 1564510060593,
+    "lastKnownWriteTime" : 1564685528,
+    "last_content_update" : 1564685528679,
     "path" : "~/Documents/GitHub/GW4_AAT/Analyses_scripts/3.Exploratory.Rmd",
     "project_path" : "3.Exploratory.Rmd",
     "properties" : {
+        "cursorPosition" : "108,0",
+        "scrollLine" : "76"
     },
     "read_only" : false,
     "read_only_alternatives" : [

@@ -1,0 +1,7 @@
+"0","ratings <- melt(ratings_sum, variable.name = ""Training_condition"", measure.vars = c(""Pre.Liking.Go"", ""Pre.Liking.Nogo"", ""Pre.Liking.Filler"", ""Post.Liking.Go"", ""Post.Liking.Nogo"", ""Post.Liking.Filler""), value.name = ""Rating"")"
+"0",""
+"0","ratings$Time <- as.factor(ifelse(ratings$Training_condition == ""Pre.Liking.Go"" | ratings$Training_condition == ""Pre.Liking.Nogo"" | ratings$Training_condition == ""Pre.Liking.Filler"", ""Pre"", ""Post""))"
+"0",""
+"0","ratings$Training_condition <- as.factor(ifelse(ratings$Training_condition == ""Pre.Liking.Go"" | ratings$Training_condition == ""Post.Liking.Go"", ""Go"", ifelse(ratings$Training_condition == ""Pre.Liking.Nogo"" | ratings$Training_condition == ""Post.Liking.Nogo"", ""No-go"", ""Control"")))"
+"0",""
+"0","ratings$Time <- factor(ratings$Time, levels = c(""Pre"", ""Post""))"

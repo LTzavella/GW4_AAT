@@ -85,6 +85,8 @@ block_RTs_graph$block <- ifelse(grepl('B1', block_RTs_graph$condition) == TRUE, 
 
 write.csv(block_RTs_graph, file=here("csvs", "block_RTs.csv"), row.names = FALSE)
 
+#####error rates######
+
 gng_pes <- lapply(gng, transform, accuracy = as.integer(ifelse(values.gng_correct==1, "0", "1")))
 
 block_PEs <- ldply(gng_pes, fun_gng_PEs_blocks)

@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1564623613434.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1246268543",
+    "id" : "4CD5C261",
+    "lastKnownWriteTime" : 1564685526,
+    "last_content_update" : 1564685526704,
+    "path" : "~/Documents/GitHub/GW4_AAT/Analyses_scripts/2.Graphs.Rmd",
+    "project_path" : "2.Graphs.Rmd",
+    "properties" : {
+        "cursorPosition" : "167,0",
+        "scrollLine" : "150"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

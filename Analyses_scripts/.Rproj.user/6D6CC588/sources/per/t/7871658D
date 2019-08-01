@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1564665499084.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "7871658D",
+    "lastKnownWriteTime" : 154618822691,
+    "last_content_update" : 1564665499084,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "C8F0A8F8",
+        "caption" : "block_PEs_graph",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=block_PEs_graph&cache_key=C8F0A8F8",
+        "displayedObservations" : 652,
+        "environment" : "",
+        "expression" : "block_PEs_graph",
+        "object" : "block_PEs_graph",
+        "preview" : 0,
+        "totalObservations" : 652,
+        "variables" : 3
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
