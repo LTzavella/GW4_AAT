@@ -17,4 +17,4 @@
 
 ### Preprint materials
 
-> We have used the *papaja* package (https://github.com/crsh/papaja) for our preprint preparation.
+> We have used the *papaja* package (https://github.com/crsh/papaja) for our preprint preparation. Files will be made available when the preprint is published online.
