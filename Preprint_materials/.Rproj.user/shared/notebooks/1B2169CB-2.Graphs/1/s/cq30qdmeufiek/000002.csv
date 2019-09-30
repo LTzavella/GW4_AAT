@@ -1,2 +1,0 @@
-"0","all_data <- read.csv(here(""csvs/all_data.csv""))"
-"0","ratings_sum <- read.csv(here(""csvs/Ratings_sum.csv""))"
