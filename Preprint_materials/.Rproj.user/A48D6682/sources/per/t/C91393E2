@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1574852525727.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2911775768",
+    "id" : "C91393E2",
+    "lastKnownWriteTime" : 1574855813,
+    "last_content_update" : 1574855813926,
+    "path" : "~/GitHub/GW4_AAT/Preprint_materials/GW4_2017_Preprint.Rmd",
+    "project_path" : "GW4_2017_Preprint.Rmd",
+    "properties" : {
+        "cursorPosition" : "141,107",
+        "scrollLine" : "138",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

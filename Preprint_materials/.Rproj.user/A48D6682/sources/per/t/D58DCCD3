@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1574852670749.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2992134869",
+    "id" : "D58DCCD3",
+    "lastKnownWriteTime" : 1569463978,
+    "last_content_update" : 1569463978,
+    "path" : "~/GitHub/Thesis/index/02-chap2.Rmd",
+    "project_path" : null,
+    "properties" : {
+        "cursorPosition" : "95,1092",
+        "scrollLine" : "96"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
