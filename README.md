@@ -12,4 +12,4 @@
 #### Pre-processing pipeline
 * Please note that we have already provided a summary data file (see folder 'summary_files' on OSF - https://osf.io/eu6xj/) for all analyses for convenience and pre-processing can be skipped.
 * If you wish to check the pre-processing steps or make alterations, please open the 'GW4_Analyses.RProj' and in your R session select the script '1.Pre_processing.Rmd'.
-* This script will require the raw_data folder as mentioned above. The scripts produce multiple summary files, but on OSF we have kept one data file with all variables that are renamed for convenience. A data guide that explains all variables has also been uploaded. 
+* This script will require the raw_data folder as mentioned above. The scripts produce multiple summary files (one per behavioural task / set of outcomes), but on OSF we have kept one data file with all variables that are renamed for convenience. A data guide that explains all variables has also been uploaded. 
