@@ -1,4 +1,4 @@
-## Analyses and preprint materials for pre-registered project: "A multi-site study investigating the effects of inhibitory control training on automatic action tendendies"
+## Analyses scripts for "Effects of inhibitory control training on food-related action tendencies, liking and choice" 
 
 ### Analyses scripts
 
