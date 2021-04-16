@@ -1,7 +1,0 @@
-"0","graph_data <- melt(all_data, variable.name = ""Training_condition"", measure.vars = c(""Pre_Go_bias"", ""Pre_NoGo_bias"", ""Pre_Filler_bias"", ""Post_Go_bias"", ""Post_NoGo_bias"", ""Post_Filler_bias""), value.name = ""Bias_score"")"
-"0",""
-"0","graph_data$Time <- as.factor(ifelse(graph_data$Training_condition == ""Pre_Go_bias"" | graph_data$Training_condition == ""Pre_NoGo_bias"" | graph_data$Training_condition == ""Pre_Filler_bias"", ""Pre"", ""Post""))"
-"0",""
-"0","graph_data$Training_condition <- as.factor(ifelse(graph_data$Training_condition == ""Pre_Go_bias"" | graph_data$Training_condition == ""Post_Go_bias"", ""Go"", ifelse(graph_data$Training_condition == ""Pre_NoGo_bias"" | graph_data$Training_condition == ""Post_NoGo_bias"", ""No-go"", ""Control"")))"
-"0",""
-"0","graph_data$Time <- factor(graph_data$Time, levels = c(""Pre"", ""Post""))"

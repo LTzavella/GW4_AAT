@@ -1,8 +1,0 @@
-"0","GNG_sum$DNG <- GNG_sum$NoGo.PC - GNG_sum$FillerNoGo.PC"
-"0",""
-"0","ggplot(GNG_sum, aes(y = NoGo.PC, x = FillerNoGo.PC)) +"
-"0","  geom_abline(intercept = 0, slope = 1, alpha = 0.6, color = ""black"", lwd = 0.55) +"
-"0","  geom_point(size = 3, alpha = 0.6, aes(color = DNG), position = ""jitter"") + labs(y = expression(PCsignal[nogo]), x = expression(PCsignal[""control-nogo""])) +"
-"0","  scale_color_viridis_c(option = ""viridis"", guide = ""colourbar"", space = ""Lab"", begin = 0, end = 0.85, direction = 1) + theme_pubr(base_family = ""Palatino"", base_size = 18, margin = TRUE, legend = ""right"") + labs(color = ~Delta) + ylim(0.7, 1.02) + xlim(0.7, 1.02) + theme(legend.text.align = 1) + theme(legend.text = element_text(size = 16)) +"
-"0",""
-"0","  ggsave(""graphs/PCsignal.png"", dpi = 300, width = 10, height = 6)"

@@ -1,1 +1,0 @@
-"0","sum_rat <- summarySE(ratings, measurevar = ""Rating"", groupvars = c(""Training_condition"", ""Time""))"

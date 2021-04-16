@@ -1,5 +1,0 @@
-"0","AAT_init$script.subjectid <- as.integer(AAT_init$.id)"
-"0","AAT_init <- AAT_init %>% arrange(desc(script.subjectid))"
-"0",""
-"0","retest <- as.data.frame(rbind(all_data[c(2, 84:86)], AAT_init[c(30, 27:29)]))"
-"0","retest$measure <- c(rep(""Completion time"", 163), rep(""Initiation time"", 163))"
