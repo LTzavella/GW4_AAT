@@ -304,7 +304,7 @@ write.csv(mean_ratings, file=here("csvs", "mean_ratings.csv"), row.names = FALSE
 ```{r}
 #'Normalise' food choices according to the total number of responses per participant (i.e., proportion)
 
-sum <- read.csv(file=here("summary_processed.csv"))
+sum <- read.csv(file=here("summary_fct.csv"))
 
 levels(sum$values.selected_1) <- c("None","Filler","Filler","Go","Go","Nogo","Nogo")
 levels(sum$values.selected_2) <- c("None","Filler","Filler","Go","Go","Nogo","Nogo")
